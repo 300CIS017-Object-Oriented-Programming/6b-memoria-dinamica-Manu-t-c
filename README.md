@@ -479,6 +479,7 @@ Total administración recaudada: 850000
 
 ### 🔥Ejercicio  ¿Qué sigue?
 📌 Implementa otra mejora en el proyecto, documenta en este README la nueva funcionalidad, pruébala y compártela
+    El mejora que le he agregado es que ahora cuando agregas un propietario te informa que este ha sido creado con exito, dado que antes no lo hacia.
 
 ## UML
 <details>

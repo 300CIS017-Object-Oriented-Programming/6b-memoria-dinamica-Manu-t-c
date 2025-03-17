@@ -7,6 +7,7 @@ Propietario::Propietario()
     identificacion = 0;
     nombre = "";
     propiedad = NULL;
+    cout << "Se ha creado un nuevo propietario." << std::endl;
 }
 
 void Propietario::mostrarDatos()
