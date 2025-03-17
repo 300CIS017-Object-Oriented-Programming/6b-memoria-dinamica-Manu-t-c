@@ -27,7 +27,7 @@ Propiedad *Propietario::getPropiedad() const
     return propiedad;
 }
 
-long Propietario::getIdentificacion() const
+const long &Propietario::getIdentificacion() const
 {
     return identificacion;
 }

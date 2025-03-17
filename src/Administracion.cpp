@@ -18,16 +18,27 @@ Administracion::Administracion() {
  */
 void Administracion::inicializarDatos() {
     Propietario *persona1 = new Propietario();
+    std:: cout << "Objeto 1persona creado" << endl;
     Propietario *persona2 = new Propietario();
+    std::cout << "Objeto 2persona creado" << endl;
     Propietario *persona3 = new Propietario();
+    std::cout << "Objeto 3persona creado" << endl;
     Propietario *persona4 = new Propietario();
+    std::cout << "Objeto 4persona creado" << endl;
     Propiedad *prop1 = new Propiedad();
+    std::cout << "Objeto 1propiedad creado" << endl;
     Propiedad *prop2 = new Propiedad();
+    std::cout << "Objeto 2propiedad creado" << endl;
     Propiedad *prop3 = new Propiedad();
+    std::cout << "Objeto 3propiedad creado" << endl;
     Propiedad *prop4 = new Propiedad(); // Automaticamente al constructor x defecto
+    std::cout << "Objeto 4propiedad creado" << endl;
     CuartoUtil *cuarto1 = new CuartoUtil();
+    std::cout << "Objeto 1cuarto creado" << endl;
     CuartoUtil *cuarto2 = new CuartoUtil();
+    std::cout << "Objeto 2cuarto creado" << endl;
     CuartoUtil *cuarto3 = new CuartoUtil();
+    std::cout << "Objeto 3cuarto creado" << endl;
 
     //Inicializar cuartos utiles
     vector<CuartoUtil *> cuartosUtiles;
@@ -305,5 +316,44 @@ void Administracion::imprimirPropietariosCuartoUtil(bool isTerminado) {
                 propietario->mostrarDatos();
             }
         }
+    }
+}
+void Administracion::generarReportePropiedad() {
+    float totalRecaudado = 0;
+    for (int i = 0; i < propietarios.size(); i++) {
+        if (propietarios[i]->getPropiedad() != nullptr) {
+            cout << "Propietario: " << propietarios[i]->getNombre()
+            << ", ID: " << propietarios[i]->getIdentificacion() << endl;
+
+            Propiedad* propiedad = propietarios[i]->getPropiedad();
+            {
+                cout << "- Propiedad ID: " << propiedad->getNumIdentificacion()
+                << ", Piso: " << propiedad->getPiso()
+                << ", Area: " << propiedad->getAreaPropiedad()
+                << endl;
+
+                if (propiedad->isHayParqueadero()) {
+                    cout << "- Tiene Parqueadero: Si" << endl;
+                } else {
+                    cout << "- Tiene Parqueadero: No" << endl;
+                }
+
+                CuartoUtil* cuarto = propiedad->getCuartoUtil();
+                if (cuarto != nullptr) {
+                    //si existe el cuarto
+                    if (cuarto->isEstaTerminado()) {
+                        cout << "-Cuarto Util: Terminado" << endl;
+                    } else {
+                        cout << "- Cuarto Util: No Terminado" << endl;
+                    }
+                } else { //Si no existe el cuarto
+                    cout << "- Cuarto Util: No tiene" << endl;
+                }
+
+                float valorAdministracion = propiedad->calcularRecargo(cobroAscensor, costoBase, recargo);
+                totalRecaudado += valorAdministracion;
+            }
+        }
+        cout << "Total admin. recaudada: " << totalRecaudado << endl;
     }
 }

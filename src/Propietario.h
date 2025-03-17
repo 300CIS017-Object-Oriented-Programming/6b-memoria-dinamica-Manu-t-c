@@ -17,7 +17,7 @@ public:
     Propietario();
 
     virtual ~Propietario(); // Destructor
-    long getIdentificacion() const;
+    const long &getIdentificacion() const;
 
     const string &getNombre() const;
 
